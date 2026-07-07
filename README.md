@@ -53,3 +53,12 @@ Build command: npm run build
 Publish directory: dist
 Functions directory: netlify/functions
 ```
+
+
+## 本次更新
+
+- 优化首页文案，强化“求职奥德赛”产品隐喻。
+- 调整首页岗位浮动球位置，避免重叠，仅展示岗位名称。
+- 删除冗余的 Product Flow 模块。
+- 画像采集分栏增加示例占位说明，并提供“填入示例画像”按钮。
+- Footer 增加 Amy 水印。

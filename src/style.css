@@ -373,3 +373,54 @@ pre { border: 1px solid rgba(255,255,255,.08); box-shadow: inset 0 0 0 1px rgba(
 .contextCard { background: #b8a4ed; }
 @media (max-width: 1120px) { .fieldGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 760px) { .fieldGrid { grid-template-columns: 1fr; } .roleCloud { min-height: 420px; } .bubble { transform: scale(.92); } }
+
+/* Final polish v2: clearer hero, non-overlapping role constellation, compact footer watermark */
+.heroCopy p { max-width: 760px; }
+.roleCloud { min-height: 560px; }
+.bubble { min-width: 68px; max-width: 122px; min-height: 44px; padding: 8px 11px; font-size: 11.5px; box-shadow: inset 0 -9px 16px rgba(10,10,10,.07), 0 12px 34px rgba(10,10,10,.07); }
+.b0 { left: 7%; top: 9%; background:#ff4d8b; color:#fff; }
+.b1 { left: 31%; top: 7%; background:#e8b94a; }
+.b2 { left: 58%; top: 8%; background:#b8a4ed; }
+.b3 { right: 6%; top: 12%; background:#ffb084; }
+.b4 { left: 14%; top: 25%; background:#a4d4c5; }
+.b5 { left: 42%; top: 24%; background:#fffaf0; }
+.b6 { right: 18%; top: 28%; background:#1a3a3a; color:#fff; }
+.b7 { left: 5%; top: 42%; background:#f5f0e0; }
+.b8 { left: 28%; top: 42%; background:#ff6b5a; color:#fff; }
+.b9 { left: 52%; top: 43%; background:#b8a4ed; }
+.b10 { right: 5%; top: 46%; background:#e8b94a; }
+.b11 { left: 17%; top: 60%; background:#ffb084; }
+.b12 { left: 39%; top: 60%; background:#1a3a3a; color:#fff; }
+.b13 { right: 28%; top: 61%; background:#a4d4c5; }
+.b14 { right: 8%; top: 65%; background:#fffaf0; }
+.b15 { left: 8%; bottom: 9%; background:#b8a4ed; }
+.b16 { left: 30%; bottom: 10%; background:#ff4d8b; color:#fff; }
+.b17 { left: 52%; bottom: 8%; background:#f5f0e0; }
+.b18 { right: 18%; bottom: 9%; background:#ffb084; }
+.b19 { right: 4%; bottom: 11%; background:#1a3a3a; color:#fff; }
+.b0,.b4,.b9,.b13,.b17 { animation-delay: -.4s; }
+.b1,.b5,.b10,.b14,.b18 { animation-delay: -1.1s; }
+.b2,.b6,.b11,.b15,.b19 { animation-delay: -1.9s; }
+.b3,.b7,.b8,.b12,.b16 { animation-delay: -2.6s; }
+.qualityActions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
+.qualityActions .secondaryBtn.compact { margin-top: 0; }
+.fieldItem input::placeholder, .fieldItem textarea::placeholder, .formCard textarea::placeholder { color: #7b7468; opacity: .78; }
+.fieldItem:hover { border-color: rgba(10,10,10,.18); transform: translateY(-1px); transition: transform .18s ease, border-color .2s ease; }
+.sectionHead p { font-size: 16px; }
+footer { display: flex; align-items: center; justify-content: center; gap: 14px; }
+footer strong { display: inline-flex; align-items: center; justify-content: center; min-width: 62px; height: 34px; padding: 0 14px; border-radius: 999px; color: #0a0a0a; background: #fffaf0; border: 1px solid #e5e5e5; font-family: ui-serif, Georgia, serif; font-style: italic; letter-spacing: .03em; box-shadow: inset 0 -8px 18px rgba(10,10,10,.04); }
+@media (max-width: 980px) {
+  .roleCloud { min-height: 600px; }
+  .bubble { min-width: 62px; max-width: 110px; }
+  .b0 { left: 4%; top: 8%; } .b1 { left: 37%; top: 7%; } .b2 { right: 5%; top: 9%; }
+  .b3 { left: 8%; top: 23%; } .b4 { left: 42%; top: 22%; } .b5 { right: 6%; top: 25%; }
+  .b6 { left: 4%; top: 40%; } .b7 { left: 35%; top: 40%; } .b8 { right: 7%; top: 43%; }
+  .b9 { left: 9%; top: 57%; } .b10 { left: 43%; top: 56%; } .b11 { right: 8%; top: 60%; }
+  .b12 { left: 7%; bottom: 10%; } .b13 { left: 38%; bottom: 8%; } .b14 { right: 7%; bottom: 10%; }
+  .b15,.b16,.b17,.b18,.b19 { display:none; }
+}
+@media (max-width: 560px) {
+  .roleCloud { min-height: 520px; }
+  .bubble { font-size: 10.5px; min-height: 40px; padding: 7px 9px; }
+  footer { flex-direction: column; gap: 8px; }
+}

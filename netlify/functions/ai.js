@@ -2,8 +2,8 @@ const taskPrompts = {
   career: {
     agent: 'Career Pathfinder Agent',
     name: '职业规划',
-    system: '你是职业定位与路径规划 Agent。基于结构化画像、简历证据、目标 JD、能力雷达和岗位推荐结果，输出可信、具体、可执行的职业路径。',
-    output: ['主路径与备选路径', '推荐依据与证据', '能力雷达解读', '短板和风险', '30/60/90 天行动计划']
+    system: '你是求职执行方案 Agent。基于结构化画像、简历证据、目标 JD、能力雷达和当前选中路径，输出可直接执行的材料优化与面试准备方案。不要大段重复岗位拓展路径、搜索关键词和公司池，重点放在简历重构、经历挖掘、项目补强、项目案例包装、面试准备、投递反馈优化。',
+    output: ['求职诊断摘要', '简历重构方案', '经历挖掘与项目补强', '项目案例包装', '面试准备方案', '投递执行与反馈优化', '7/14/30 天交付清单']
   },
   match: {
     agent: 'JD Matching Agent',
@@ -86,11 +86,15 @@ export async function handler(event) {
       `Task Router：当前进入 ${config.agent}。`,
       'Grounded Generation：把选中路径、能力雷达和知识上下文拼接后调用模型。'
     ]
-    const systemPrompt = `${config.system}\n\n约束：\n1. 用中文输出，像真实产品内的分析报告。\n2. 不要提作品集、面试官或演示。\n3. 只依据用户提供的信息和检索上下文，不编造经历。\n4. 信息不足时必须说明缺口。\n5. 输出要具体、可执行、可复制。`
+    const systemPrompt = `${config.system}\n\n约束：\n1. 用中文输出，像真实产品内的分析报告。\n2. 不要把本产品描述成作品集或演示；可以在求职建议中指导用户制作项目案例/作品集。\n3. 只依据用户提供的信息和检索上下文，不编造经历。\n4. 信息不足时必须说明缺口。\n5. 输出要具体、可执行、可复制。
+6. 职业规划任务不要重复左侧已展示的岗位拓展路径、搜索关键词和公司池，简历、项目、项目案例、面试准备必须占主要篇幅。
+7. 简历建议必须包含：求职摘要写法、技能栏排序、项目经历改写方向、至少 2 条可直接复制的 bullet、至少 1 组“原表达 → 优化表达”。
+8. 项目补强必须包含：项目主题、适配岗位、产出物、执行步骤、可写进简历的表达。
+9. 面试准备必须包含：自我介绍结构、3 个项目故事、高频追问和回答框架。`
     const userPrompt = `当前任务：${config.name}\n当前 Agent：${config.agent}\n\n【结构化画像】\n${profileText || '未提供'}\n\n【简历/经历】\n${resumeText || '未提供'}\n\n【目标 JD/方向】\n${jdText || '未提供'}\n\n【偏好与限制】\n${rolePreference || '未提供'}\n\n【补充问题】\n${userInput || '无'}\n\n【职业路径 Top 4】\n${Array.isArray(roleCandidates) ? roleCandidates.map((r, i) => `${i + 1}. ${r.title}｜${r.score}/100｜${r.reason || r.description || ''}`).join('\n') : '未提供'}\n\n【当前选中路径】\n${selectedRole ? `${selectedRole.title}：${selectedRole.description}\n证据：${(selectedRole.evidence || []).join('、')}\n缺口：${(selectedRole.gaps || []).join('、')}` : '未选择'}\n\n【能力雷达】\n${Object.entries(abilityScores || {}).map(([k, v]) => `${k}: ${v}`).join(' / ') || '未提供'}\n\n【RAG 检索上下文】\n${retrieved.map(x => `- ${x.title}：${x.content}`).join('\n')}\n\n请严格输出：\n${config.output.map((x, i) => `${i + 1}. ${x}`).join('\n')}`
     const response = await fetch('https://api.deepseek.com/chat/completions', {
       method: 'POST', headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${apiKey}` },
-      body: JSON.stringify({ model: 'deepseek-chat', messages: [{ role: 'system', content: systemPrompt }, { role: 'user', content: userPrompt }], temperature: 0.58, max_tokens: 2600 })
+      body: JSON.stringify({ model: 'deepseek-chat', messages: [{ role: 'system', content: systemPrompt }, { role: 'user', content: userPrompt }], temperature: 0.58, max_tokens: 3800 })
     })
     if (!response.ok) return json(response.status, { error: await response.text() })
     const data = await response.json()

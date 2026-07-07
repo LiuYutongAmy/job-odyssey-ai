@@ -612,3 +612,71 @@ footer strong { display: inline-flex; align-items: center; justify-content: cent
   .b4 { left: 8% !important; top: 60% !important; right:auto !important; bottom:auto !important; }
   .b5 { right: 8% !important; left:auto !important; top: 60% !important; bottom:auto !important; }
 }
+
+/* Latest final: 8 fixed, rounder, non-overlapping hero bubbles */
+.roleCloud { min-height: 500px !important; }
+.bubble {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 124px !important;
+  min-width: 124px !important;
+  max-width: 124px !important;
+  height: 82px !important;
+  min-height: 82px !important;
+  padding: 10px 12px !important;
+  border-radius: 54% 46% 50% 50% / 52% 48% 54% 46% !important;
+  font-size: 13px !important;
+  font-weight: 800 !important;
+  text-align: center !important;
+  line-height: 1.18 !important;
+  letter-spacing: -.01em !important;
+}
+.b8,.b9,.b10,.b11,.b12,.b13,.b14,.b15,.b16,.b17,.b18,.b19 { display: none !important; }
+.b0 { left: 7% !important; top: 7% !important; background:#ff4d8b !important; color:#fff !important; }
+.b1 { right: 8% !important; left:auto !important; top: 8% !important; background:#e8b94a !important; color:#0a0a0a !important; }
+.b2 { left: 23% !important; top: 30% !important; background:#b8a4ed !important; color:#0a0a0a !important; }
+.b3 { right: 23% !important; left:auto !important; top: 30% !important; background:#a4d4c5 !important; color:#0a0a0a !important; }
+.b4 { left: 7% !important; top: 53% !important; background:#fffaf0 !important; color:#0a0a0a !important; }
+.b5 { right: 8% !important; left:auto !important; top: 53% !important; background:#ffb084 !important; color:#0a0a0a !important; }
+.b6 { left: 25% !important; top: 76% !important; background:#1a3a3a !important; color:#fff !important; }
+.b7 { right: 25% !important; left:auto !important; top: 76% !important; background:#f5f0e0 !important; color:#0a0a0a !important; }
+
+/* Latest final: left panel as application range dashboard */
+.scopeCard { padding: 22px; color: #0a0a0a; }
+.scopeCard > b { display: inline-flex; padding: 7px 12px; border-radius: 999px; background: rgba(255,255,255,.34); border: 1px solid rgba(255,255,255,.36); font-size: 13px; }
+.scopeBlock { position: relative; z-index: 1; margin-top: 14px; padding: 16px; border-radius: 18px; background: rgba(255,255,255,.26); border: 1px solid rgba(255,255,255,.32); }
+.scopeBlock span { display: block; margin-bottom: 8px; font-size: 12px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: rgba(10,10,10,.62); }
+.scopeBlock strong { margin: 0 0 8px !important; font-size: 28px !important; letter-spacing: -.035em !important; }
+.scopeBlock p { margin: 8px 0 0; color: #231d2e; line-height: 1.62; }
+.scopeBlock em { display: inline-flex; margin-right: 8px; padding: 3px 8px; border-radius: 999px; background: rgba(255,255,255,.44); font-size: 12px; font-style: normal; font-weight: 800; color: rgba(10,10,10,.72); }
+.scopeBlock .chips { margin-top: 8px; }
+.scopeBlock .chips i { background: rgba(255,255,255,.42); border-color: rgba(255,255,255,.42); }
+.mainScope { background: rgba(255,250,240,.42); }
+.resultCard pre { min-height: 560px; }
+
+@media (max-width: 980px) {
+  .roleCloud { min-height: 520px !important; }
+  .bubble { width: 108px !important; min-width:108px !important; max-width:108px !important; height: 70px !important; min-height:70px !important; font-size: 11.5px !important; }
+  .b0 { left: 6% !important; top: 7% !important; }
+  .b1 { right: 6% !important; left:auto !important; top: 7% !important; }
+  .b2 { left: 20% !important; top: 30% !important; }
+  .b3 { right: 20% !important; left:auto !important; top: 30% !important; }
+  .b4 { left: 6% !important; top: 53% !important; }
+  .b5 { right: 6% !important; left:auto !important; top: 53% !important; }
+  .b6 { left: 20% !important; top: 76% !important; }
+  .b7 { right: 20% !important; left:auto !important; top: 76% !important; }
+}
+@media (max-width: 560px) {
+  .roleCloud { min-height: 540px !important; }
+  .bubble { width: 94px !important; min-width:94px !important; max-width:94px !important; height: 62px !important; min-height:62px !important; font-size: 10.5px !important; }
+  .b0 { left: 8% !important; top: 7% !important; }
+  .b1 { right: 8% !important; left:auto !important; top: 7% !important; }
+  .b2 { left: 8% !important; top: 29% !important; }
+  .b3 { right: 8% !important; left:auto !important; top: 29% !important; }
+  .b4 { left: 8% !important; top: 51% !important; }
+  .b5 { right: 8% !important; left:auto !important; top: 51% !important; }
+  .b6 { left: 8% !important; top: 73% !important; }
+  .b7 { right: 8% !important; left:auto !important; top: 73% !important; }
+  .scopeBlock strong { font-size: 24px !important; }
+}

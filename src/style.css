@@ -237,3 +237,139 @@ pre { border: 1px solid rgba(255,255,255,.08); box-shadow: inset 0 0 0 1px rgba(
   .profileQuality { grid-column: auto; }
   .flowPills { margin-top: 16px; }
 }
+
+.emptyHint { margin: 8px 0 10px; color: #6a6a6a; font-size: 14px; line-height: 1.55; }
+.emptyGarden { grid-column: 1 / -1; min-height: 280px; border: 1px dashed rgba(10,10,10,.2); background: rgba(245,240,224,.72); border-radius: 24px; padding: 32px; display: grid; align-content: center; gap: 14px; color: #1a1a1a; }
+.emptyGarden b { font-size: 22px; letter-spacing: -.03em; }
+.emptyGarden p { max-width: 620px; color: #4a4a4a; margin: 0; }
+.emptyGarden div { display: flex; flex-wrap: wrap; gap: 18px; margin-top: 12px; }
+.emptyGarden span { width: 88px; height: 88px; border-radius: 50% 48% 52% 44%; background: linear-gradient(145deg, #fffaf0, #ebe6d6); border: 1px solid #e5e5e5; animation: flowerFloat 5.5s ease-in-out infinite; }
+.emptyGarden span:nth-child(2) { animation-delay: -.8s; }
+.emptyGarden span:nth-child(3) { animation-delay: -1.6s; }
+.emptyGarden span:nth-child(4) { animation-delay: -2.4s; }
+.ghostFlower { opacity: .64; filter: grayscale(.15); }
+.secondaryBtn.compact { height: 36px; padding: 9px 13px; margin-top: 14px; display: inline-flex; align-items: center; border: 1px solid rgba(255,255,255,.18); background: rgba(255,255,255,.1); color: #fff; }
+.dataChecklist b { transition: transform .15s ease, background .2s ease; }
+.dataChecklist b:hover { transform: translateY(-1px); background: #fffaf0; }
+.radarCard .emptyHint + svg .radarGrid { opacity: .45; }
+
+/* Final structured-profile release */
+.roleCloud {
+  position: relative;
+  min-height: 520px;
+  border-radius: 34px;
+  overflow: hidden;
+  border: 1px solid #e5e5e5;
+  background:
+    radial-gradient(circle at 72% 18%, rgba(255,176,132,.55), transparent 20%),
+    radial-gradient(circle at 18% 24%, rgba(255,77,139,.35), transparent 22%),
+    linear-gradient(180deg, #faf5e8, #f5f0e0);
+}
+.roleCloud::before, .roleCloud::after {
+  content: "";
+  position: absolute;
+  left: -10%; right: -10%; bottom: -80px;
+  height: 250px;
+  border-radius: 50% 50% 0 0;
+  background: #a4d4c5;
+  transform: rotate(-3deg);
+}
+.roleCloud::after { bottom: -124px; background: #b8a4ed; transform: rotate(4deg); opacity: .9; }
+.bubble {
+  position: absolute;
+  z-index: 2;
+  display: inline-grid;
+  place-items: center;
+  min-width: 74px;
+  max-width: 140px;
+  min-height: 54px;
+  padding: 10px 14px;
+  border-radius: 47% 53% 46% 54%;
+  background: #fffaf0;
+  color: #0a0a0a;
+  border: 1px solid rgba(10,10,10,.08);
+  font-size: 12px;
+  font-weight: 900;
+  line-height: 1.2;
+  text-align: center;
+  box-shadow: inset 0 -10px 18px rgba(10,10,10,.06), 0 10px 30px rgba(10,10,10,.06);
+  animation: floaty 6s ease-in-out infinite;
+}
+.b0 { left: 8%; top: 12%; background:#ff4d8b; color:#fff; }
+.b1 { left: 34%; top: 8%; background:#e8b94a; }
+.b2 { right: 9%; top: 15%; background:#b8a4ed; }
+.b3 { left: 16%; top: 34%; background:#ffb084; animation-delay:-.8s; }
+.b4 { right: 28%; top: 38%; background:#a4d4c5; animation-delay:-1.4s; }
+.b5 { right: 8%; top: 47%; background:#f5f0e0; animation-delay:-2s; }
+.b6 { left: 12%; bottom: 28%; background:#1a3a3a; color:#fff; animation-delay:-2.6s; }
+.b7 { left: 40%; bottom: 23%; background:#fffaf0; animation-delay:-3s; }
+.b8 { right: 20%; bottom: 19%; background:#ff6b5a; color:#fff; animation-delay:-3.4s; }
+.fieldGrid {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+.fieldItem {
+  display: block;
+  margin: 0;
+  padding: 18px;
+  border-radius: 22px;
+  background: #fffaf0;
+  border: 1px solid #e5e5e5;
+}
+.fieldItem b { display: block; margin-bottom: 5px; font-size: 15px; }
+.fieldItem small { display: block; min-height: 38px; color:#6a6a6a; line-height: 1.45; margin-bottom: 10px; }
+.fieldItem input {
+  width: 100%;
+  height: 44px;
+  border: 1px solid #d8d2c3;
+  background: #fffaf0;
+  color: #0a0a0a;
+  border-radius: 12px;
+  padding: 10px 12px;
+  outline: none;
+}
+.fieldItem textarea { min-height: 94px; }
+.generateProfile { margin-top: 18px; }
+.selectedPathBanner {
+  margin-top: 18px;
+  padding: 20px 22px;
+  border-radius: 24px;
+  background: #0a1a1a;
+  color: #fff;
+  border: 1px solid rgba(255,255,255,.08);
+  box-shadow: 0 20px 50px rgba(10,10,10,.08);
+}
+.selectedPathBanner b { display:block; color:#a4d4c5; letter-spacing:.08em; text-transform:uppercase; font-size:12px; }
+.selectedPathBanner strong { display:block; margin: 8px 0; font-size: clamp(24px,3vw,40px); line-height:1; letter-spacing:-.04em; }
+.selectedPathBanner p { color:rgba(255,255,255,.78); margin:0; }
+.flowerCard {
+  border-radius: 34% 46% 36% 48% / 42% 34% 48% 38%;
+  min-height: 236px;
+}
+.flowerCard::before {
+  content:"";
+  position:absolute;
+  width: 86px;
+  height: 86px;
+  left: -24px;
+  top: -24px;
+  border-radius: 52% 48% 44% 56%;
+  background: rgba(255,255,255,.16);
+}
+.flowerCard.c1 { border-radius: 44% 35% 48% 42% / 36% 52% 35% 46%; }
+.flowerCard.c2 { border-radius: 42% 52% 36% 52% / 48% 36% 52% 38%; }
+.flowerCard.c3 { border-radius: 38% 44% 54% 34% / 42% 48% 36% 50%; }
+.systemGrid.compact article {
+  min-height: 0;
+  padding: 22px 24px;
+  border-radius: 22px;
+}
+.systemGrid.compact article b { font-size: 22px; }
+.systemGrid.compact article p { margin: 12px 0 0; font-size: 15px; }
+.productIntro { align-items: center; }
+.formCard textarea.mini { min-height: 90px; }
+.contextCard { background: #b8a4ed; }
+@media (max-width: 1120px) { .fieldGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 760px) { .fieldGrid { grid-template-columns: 1fr; } .roleCloud { min-height: 420px; } .bubble { transform: scale(.92); } }

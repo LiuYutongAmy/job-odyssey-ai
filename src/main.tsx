@@ -75,8 +75,14 @@ const exampleFields: ProfileFields = {
 }
 
 const abilityLabels: Record<AbilityKey, string> = {
-  product: '产品定义', research: '用户研究', data: '数据分析', tech: '技术理解',
-  ai: 'AI 应用', delivery: '项目推进', communication: '沟通表达', business: '商业判断'
+  product: '专业执行',
+  research: '沟通表达',
+  data: '问题分析',
+  tech: '数字技术',
+  ai: '创新判断',
+  delivery: '协作推进',
+  communication: '学习适应',
+  business: '业务理解'
 }
 
 const taskMeta: Record<Task, { label: string; icon: string; title: string; description: string; placeholder: string; outputs: string[] }> = {
@@ -161,10 +167,37 @@ const roleCatalog: RoleProfile[] = [
   role('collaboration-product', '协同办公产品实习生', '协同办公', '围绕文档、日程、审批、消息、权限和团队协作设计功能。', ['product','research','business'], ['办公','协同','文档','日程','审批','消息','权限','团队']),
   role('low-code-product', '低代码产品实习生', '低代码平台', '面向表单、流程、组件、权限和配置能力设计平台。', ['tech','product','delivery'], ['低代码','表单','流程','组件','配置','权限','平台']),
   role('game-product', '游戏产品实习生', '游戏产品', '围绕玩法、数值、活动、留存和商业化分析游戏体验。', ['research','data','business'], ['游戏','玩法','数值','活动','留存','商业化','玩家']),
-  role('overseas-product', '海外产品实习生', '海外产品', '结合本地化、增长、合规和跨文化用户研究设计产品。', ['business','research','communication'], ['海外','本地化','跨文化','增长','合规','市场','用户研究'])
+  role('overseas-product', '海外产品实习生', '海外产品', '结合本地化、增长、合规和跨文化用户研究设计产品。', ['business','research','communication'], ['海外','本地化','跨文化','增长','合规','市场','用户研究']),
+  role('frontend-dev', '前端开发实习生', '软件开发', '负责 Web 页面、组件、交互逻辑、性能优化和前后端联调。', ['tech','delivery','product'], ['前端','React','Vue','TypeScript','JavaScript','组件','性能','联调','CSS']),
+  role('backend-dev', '后端开发实习生', '软件开发', '负责接口、数据库、权限、服务稳定性和业务逻辑实现。', ['tech','delivery','data'], ['后端','Java','Go','Node','Python','数据库','接口','权限','缓存','服务']),
+  role('fullstack-dev', '全栈开发实习生', '软件开发', '覆盖前端页面、后端接口、数据库与部署，适合有完整项目经验的人。', ['tech','delivery','product'], ['全栈','React','API','数据库','部署','前后端','Serverless','云服务']),
+  role('data-science', '数据科学实习生', '数据科学', '使用统计建模、机器学习和实验方法解决预测、分类与决策问题。', ['data','tech','business'], ['机器学习','建模','统计','特征','预测','分类','算法','Python','实验']),
+  role('ml-engineer', '机器学习工程实习生', '算法工程', '负责模型训练、特征工程、评估、部署和工程化优化。', ['tech','data','ai'], ['机器学习','深度学习','模型训练','特征工程','PyTorch','TensorFlow','评估','部署']),
+  role('nlp-intern', 'NLP 实习生', '算法工程', '围绕文本理解、信息抽取、检索、问答和大模型应用进行研发。', ['ai','tech','data'], ['NLP','文本','信息抽取','问答','检索','大模型','语义','Embedding']),
+  role('ui-designer', 'UI 设计实习生', '视觉设计', '负责视觉规范、界面设计、设计系统、图标和交互视觉表达。', ['ai','research','product'], ['UI','视觉','设计系统','图标','Figma','界面','品牌','动效']),
+  role('brand-marketing', '品牌市场实习生', '品牌市场', '负责品牌传播、内容策划、活动创意、渠道投放和传播复盘。', ['business','communication','ai'], ['品牌','市场','传播','活动','投放','内容','创意','复盘']),
+  role('social-media', '新媒体运营实习生', '内容运营', '围绕账号定位、内容选题、发布节奏、互动和数据复盘运营内容阵地。', ['communication','business','data'], ['新媒体','小红书','公众号','短视频','选题','内容','账号','数据复盘']),
+  role('hr-intern', '人力资源实习生', '组织人力', '支持招聘、人才发展、员工关系、培训和组织运营工作。', ['communication','delivery','business'], ['HR','招聘','面试','培训','员工关系','组织','人才','沟通']),
+  role('recruiter', '招聘运营实习生', '招聘运营', '负责职位发布、简历筛选、候选人沟通、面试安排和数据复盘。', ['communication','delivery','data'], ['招聘','简历筛选','候选人','面试安排','沟通','招聘漏斗','Offer']),
+  role('finance-analyst', '财务分析实习生', '财务分析', '围绕预算、成本、收入、报表和经营分析支持业务决策。', ['data','business','product'], ['财务','预算','成本','收入','报表','经营分析','Excel','利润']),
+  role('investment-research', '投资研究实习生', '投资研究', '研究行业、公司、财务数据和竞争格局，输出投资分析材料。', ['business','data','communication'], ['投资','行业研究','公司研究','财务分析','估值','竞争格局','研报']),
+  role('risk-control', '风险控制实习生', '风险控制', '围绕风险识别、规则策略、异常监控、合规流程和数据分析开展工作。', ['data','business','delivery'], ['风控','风险','规则','异常','合规','监控','策略','金融']),
+  role('management-consulting', '管理咨询实习生', '咨询顾问', '通过访谈、桌面研究、数据分析和汇报材料支持战略与运营项目。', ['business','communication','data'], ['咨询','访谈','桌面研究','PPT','战略','运营','行业分析','汇报']),
+  role('public-affairs', '公共事务实习生', '公共事务', '支持政策研究、政府关系、公共议题分析和项目沟通材料。', ['communication','business','research'], ['公共事务','政策','政府关系','议题','研究','材料','沟通']),
+  role('legal-compliance', '法务合规实习生', '法务合规', '协助合同、合规审查、隐私政策、风控材料和法律研究。', ['product','business','communication'], ['法务','合规','合同','隐私','审查','法律研究','风控']),
+  role('clinical-research', '临床研究助理', '医疗健康', '支持临床试验、病例资料、随访、数据录入和研究流程管理。', ['product','data','delivery'], ['临床','病例','随访','试验','医学','数据录入','研究']),
+  role('bioinformatics', '生物信息分析实习生', '生命科学数据', '使用统计、编程和生物学知识处理组学数据与科研问题。', ['data','tech','product'], ['生物信息','组学','R','Python','统计','科研','数据分析','基因']),
+  role('supply-chain-ops', '供应链运营实习生', '供应链运营', '围绕订单、库存、物流、仓配和供应商协同提升履约效率。', ['delivery','business','data'], ['供应链','库存','物流','仓配','订单','供应商','履约']),
+  role('merchandising', '商品运营实习生', '商品运营', '围绕商品结构、价格、库存、活动和销售数据进行运营。', ['business','data','delivery'], ['商品','价格','库存','活动','销售','电商','运营']),
+  role('game-ops', '游戏运营实习生', '游戏运营', '负责活动配置、玩家反馈、数据复盘、社区运营和版本节奏支持。', ['business','communication','data'], ['游戏运营','玩家','活动','社区','版本','留存','付费']),
+  role('environment-analyst', '环境数据分析实习生', '环境数据', '使用数据分析、GIS 或模型方法支持环境监测、碳排和可持续研究。', ['data','tech','business'], ['环境','碳排','可持续','GIS','监测','模型','数据']),
+  role('policy-research', '政策研究实习生', '政策研究', '围绕政策文本、行业影响、社会议题和研究报告开展分析。', ['business','communication','data'], ['政策','研究','文本分析','报告','社会议题','行业影响'])
 ]
 
-const floatingRoleNames = roleCatalog.map(r => r.title.replace('实习生','').replace('助理',''))
+const floatingRoleNames = [
+  'AI 产品', '数据分析', '用户研究', '商业分析', '市场增长', '品牌内容',
+  '咨询顾问', '金融风控', '教育科技', '医疗健康', '运营管理', '软件开发'
+]
 
 
 const fieldExamples: Record<keyof ProfileFields, string> = {
@@ -216,22 +249,23 @@ function combinedText(fields: ProfileFields) { return `${compileProfile(fields)}
 
 function computeAbilities(text: string): AbilityScores {
   const groups: Record<AbilityKey, string[]> = {
-    product: ['产品','需求','PRD','原型','流程','用户故事','功能','竞品','方案','MVP','路线图','平台','权限','体验'],
-    research: ['访谈','问卷','调研','用户画像','可用性','洞察','样本','旅程图','痛点','共情','服务蓝图'],
-    data: ['SQL','Python','BI','指标','数据','漏斗','归因','分析','建模','ArcGIS','GEE','Tableau','PowerBI','数据仓库','留存','转化'],
-    tech: ['React','TypeScript','API','接口','数据库','前端','后端','部署','架构','Supabase','Netlify','SDK','低代码','Webhook'],
-    ai: ['AI','AIGC','大模型','LLM','Prompt','Agent','RAG','DeepSeek','向量','模型','生成','Embedding','知识库'],
-    delivery: ['上线','推动','迭代','验收','交付','协同','评审','落地','闭环','排期','里程碑','SOP'],
-    communication: ['汇报','沟通','访谈','协同','跨团队','客户','医护','管理层','表达','培训','售前','用户反馈'],
-    business: ['商业','市场','转化','增长','营收','客户','策略','行业','竞品','成本','收入','ROI','续约','留资']
+    product: ['专业','执行','实习','项目','作品','课程','证书','交付','细节','负责','独立完成','方法论','SOP','落地'],
+    research: ['沟通','表达','汇报','访谈','问卷','客户','用户','协作','跨团队','培训','演示','文档','反馈','纪要'],
+    data: ['问题','分析','拆解','逻辑','归因','指标','数据','SQL','Python','BI','统计','漏斗','留存','转化','建模','报告','洞察'],
+    tech: ['数字','技术','工具','系统','平台','API','前端','后端','React','TypeScript','数据库','自动化','AI','大模型','Prompt','Agent','RAG','Tableau','PowerBI','ArcGIS','Excel'],
+    ai: ['创新','判断','方案','设计','探索','机会','策略','优化','迭代','创意','AIGC','新场景','原型','MVP','试验','增长点'],
+    delivery: ['推进','协作','上线','排期','里程碑','跟进','验收','交付','协调','复盘','闭环','项目管理','资源','风险'],
+    communication: ['学习','自学','适应','转专业','新领域','课程','复盘','成长','快速上手','迭代','阅读','研究','训练','补强'],
+    business: ['业务','商业','市场','行业','客户','收入','成本','增长','运营','销售','金融','教育','医疗','电商','SaaS','ToB','ROI','策略','竞品']
   }
   const lengthBoost = Math.min(8, Math.floor(text.length / 420))
   const numericBoost = /\d+|%|万|亿|KPI|ROI|DAU|UV|PV/i.test(text) ? 4 : 0
   return Object.fromEntries(Object.entries(groups).map(([key, ks]) => {
     const found = hits(text, ks)
-    return [key, clamp(30 + found.length * 6.5 + lengthBoost + numericBoost, 8, 96)]
+    return [key, clamp(30 + found.length * 5.6 + lengthBoost + numericBoost, 8, 96)]
   })) as AbilityScores
 }
+
 function weightedAbility(scores: AbilityScores, priority: AbilityKey[]) {
   const base = Object.values(scores).reduce((a,b)=>a+b,0) / Object.values(scores).length
   const focus = priority.reduce((s,k)=>s + scores[k],0) / priority.length
@@ -288,7 +322,7 @@ function AbilityRadar({ scores, ready }: { scores: AbilityScores; ready: boolean
   return <div className="radarCard">
     <div className="cardLabel">Ability Radar</div>
     <h3>{ready ? '能力雷达已生成' : '等待生成能力结构'}</h3>
-    <p className="emptyHint">点击「生成职业画像」后，系统会根据分栏信息、简历证据和目标 JD 计算 8 个能力维度。</p>
+    <p className="emptyHint">点击「生成职业画像」后，系统会基于分栏信息、简历证据和目标 JD 计算 8 个通用职业能力。</p>
     <svg viewBox="0 0 300 300" className="radar" role="img" aria-label="能力雷达图">
       {[25,50,75,100].map(r => <polygon key={r} points={entries.map((_, i) => point(r, i, entries.length)).join(' ')} className="radarGrid" />)}
       {entries.map((_, i) => { const [x,y] = point(100, i, entries.length).split(','); return <line key={i} x1="150" y1="150" x2={x} y2={y} className="radarAxis" /> })}
@@ -366,10 +400,10 @@ function App() {
   ]
   return <main>
     <nav className="nav"><a className="brand" href="#top"><span className="brandMark">🌺</span><span>求职奥德赛 AI</span></a><div className="navLinks"><a href="#profile">画像采集</a><a href="#garden">职业地图</a><a href="#workspace">AI 工作台</a><a href="#system">系统架构</a></div></nav>
-    <section id="top" className="hero"><div className="heroCopy"><span className="eyebrow">Career Odyssey Agent</span><h1>求职奥德赛：从迷雾中找到职业航线。</h1><p>分栏采集背景、经历、技能、偏好、限制和目标 JD；点击生成后，系统会输出职业画像、职业花园、能力雷达和职业规划等。</p><div className="heroActions"><a href="#profile" className="primaryBtn">开始填写画像</a><a href="#system" className="secondaryBtn">查看系统链路</a></div></div><div className="roleCloud">{floatingRoleNames.slice(0,20).map((name,i)=><span key={name} className={`bubble b${i%20}`}>{name}</span>)}</div></section>
-    <section id="profile" className="section profileGrid"><div className="sectionHead"><span className="sectionKicker">Step 01</span><h2>画像采集</h2><p>每一项信息都会影响职业画像、岗位推荐和后续 AI 生成结果。填完后点击「生成职业画像」，系统会统一生成职业花园和能力雷达。</p></div><div className="profileQuality formCard"><div className="qualityTop"><span>画像完整度 · {liveCompleteness.confidence}</span><b>{liveCompleteness.score}%</b></div><div className="qualityBar"><i style={{width:`${liveCompleteness.score}%`}} /></div><div className="qualityChecks">{liveCompleteness.checks.map(item=><em key={item.label} className={item.ok?'ok':''}>{item.ok?'✓':'○'} {item.label}</em>)}</div><div className="signalLine"><strong>{dirty && generated ? '画像已修改' : '建议补充'}</strong>{missingSuggestions.map(s=><span key={s}>{s}</span>)}</div><div className="qualityActions"><button type="button" className="secondaryBtn compact" onClick={() => { setFields(exampleFields); setGenerated(null); setDirty(true); setSelectedRoleId(''); setResult('已填入示例画像。点击「生成职业画像」查看推荐结果。') }}>填入示例画像</button><button type="button" className="secondaryBtn compact" onClick={clearAll}>清空画像</button></div></div><div className="fieldGrid">{formFields.map(([key,label,kind])=><label key={key} className="fieldItem"><b>{label}</b><small>{fieldHelp[key]}</small>{kind==='input'?<input value={fields[key]} placeholder={fieldExamples[key]} onChange={e=>update(key,e.target.value)} />:<textarea value={fields[key]} placeholder={fieldExamples[key]} onChange={e=>update(key,e.target.value)} />}</label>)}</div><div className="formCard"><label>上传简历 / 经历附件</label><input type="file" accept=".txt,.md,.csv,.json,.pdf,.doc,.docx" onChange={e=>handleFile(e.target.files?.[0])}/><p className="note">{fileNote}</p><label>简历 / 个人经历文本</label><textarea value={fields.resumeText} placeholder={fieldExamples.resumeText} onChange={e=>update('resumeText', e.target.value)} /></div><div className="formCard"><label>目标岗位 JD</label><textarea value={fields.jdText} placeholder={fieldExamples.jdText} onChange={e=>update('jdText', e.target.value)} /><label>本次任务补充问题</label><textarea className="mini" value={fields.userInput} placeholder={fields.userInput ? taskMeta[task].placeholder : fieldExamples.userInput} onChange={e=>update('userInput', e.target.value)} /><button type="button" className="primaryBtn full generateProfile" onClick={generateProfile}>{generated && dirty ? '重新生成职业画像' : '生成职业画像'}</button></div></section>
-    <section id="garden" className="section split"><div><div className="sectionHead"><span className="sectionKicker">Step 02</span><h2>莫奈花园职业地图</h2><p>系统会从扩展岗位库中选出最匹配的 4 条路径。每张花朵卡的分数来自当前画像和目标 JD；点击卡片后，该路径会进入后续 AI 工作台上下文。</p></div><div className="selectedPathBanner"><b>当前选中路径</b><strong>{selectedRole ? selectedRole.title : '请先生成职业画像'}</strong><p>{selectedRole ? selectedRole.description : '生成后点击任意花朵卡片，系统会把该岗位写入 JD 匹配、简历优化和面试训练上下文。'}</p></div><div className="gardenGrid">{roleCandidates.length ? roleCandidates.map((r,i)=><button key={r.id} className={`gardenCard flowerCard c${i} ${selectedRole?.id===r.id?'active pulse':''}`} onClick={()=>setSelectedRoleId(r.id)}><span className="petal">{r.score}</span><div><b>{r.title}</b><em>{r.family}</em><p>{r.description}</p></div><small>{r.reason}</small><div className="chips">{r.evidence.slice(0,5).map(e=><i key={e}>{e}</i>)}</div></button>) : <div className="emptyGarden"><b>等待职业花园生成</b><p>完成画像后点击「生成职业画像」。系统会基于岗位库、能力权重和 JD 证据推荐 Top 4 路径。</p><div><span></span><span></span><span></span><span></span></div></div>}</div></div><AbilityRadar scores={displayScores} ready={!!generated}/></section>
-    <section id="workspace" className="section workspace"><div className="sectionHead wide"><span className="sectionKicker">Step 03</span><h2>AI 求职工作台</h2><p>四个模块会进入不同 Agent Prompt。画像、选中岗位、能力雷达、JD 和补充问题会一起进入服务端生成链路。</p></div><div className="taskTabs">{(Object.keys(taskMeta) as Task[]).map(k=><button key={k} className={task===k?'active':''} onClick={()=>setTask(k)}><span>{taskMeta[k].icon}</span>{taskMeta[k].label}</button>)}</div><div className="taskPanel"><div><h3>{taskMeta[task].title}</h3><p>{taskMeta[task].description}</p></div><div className="chips">{taskMeta[task].outputs.map(o=><i key={o}>{o}</i>)}</div></div><div className="contextCard"><b>AI 上下文</b><strong>{selectedRole ? selectedRole.title : '尚未选择职业路径'}</strong><p>{selectedRole ? selectedRole.description : '先生成职业画像并点击一张花朵卡片。'}</p><div className="chips">{selectedRole ? selectedRole.growth.map(g=><i key={g}>{g}</i>) : missingSuggestions.map(g=><i key={g}>待补充：{g}</i>)}</div></div><div className="resultCard"><div className="resultTop"><b>生成结果</b><span className={source==='api'?'source api':source==='fallback'?'source fallback':'source'}>{source==='api'?'模型服务':source==='fallback'?'离线规则引擎':'待生成'}</span></div><button className={`primaryBtn full ${loading?'isLoading':''}`} disabled={loading} onClick={generate}>{loading?'Agent 正在检索与生成…':`生成 ${taskMeta[task].label}`}</button><pre>{result}</pre></div></section>
+    <section id="top" className="hero"><div className="heroCopy"><span className="eyebrow">Career Odyssey Agent</span><h1>求职奥德赛：从迷雾中找到职业航线。</h1><p>分栏采集背景、经历、技能、偏好、限制和目标 JD；点击生成后，系统会输出职业画像、职业花园、能力雷达和职业规划等。</p><div className="heroActions"><a href="#profile" className="primaryBtn">开始填写画像</a><a href="#system" className="secondaryBtn">查看系统链路</a></div></div><div className="roleCloud">{floatingRoleNames.map((name,i)=><span key={name} className={`bubble b${i}`}>{name}</span>)}</div></section>
+    <section id="profile" className="section profileGrid"><div className="sectionHead"><span className="sectionKicker">Step 01</span><h2>画像采集</h2><p>每一栏都对应职业画像中的关键证据。可先点击「填入示例画像」快速体验，也可以直接覆盖示例自行填写；提交后系统会生成职业花园和能力雷达。</p></div><div className="profileQuality formCard"><div className="qualityTop"><span>画像完整度 · {liveCompleteness.confidence}</span><b>{liveCompleteness.score}%</b></div><div className="qualityBar"><i style={{width:`${liveCompleteness.score}%`}} /></div><div className="qualityChecks">{liveCompleteness.checks.map(item=><em key={item.label} className={item.ok?'ok':''}>{item.ok?'✓':'○'} {item.label}</em>)}</div><div className="signalLine"><strong>{dirty && generated ? '画像已修改' : '建议补充'}</strong>{missingSuggestions.map(s=><span key={s}>{s}</span>)}</div><div className="qualityActions"><button type="button" className="secondaryBtn compact" onClick={() => { setFields(exampleFields); setGenerated(null); setDirty(true); setSelectedRoleId(''); setResult('已填入示例画像。点击「生成职业画像」查看推荐结果。') }}>⚡ 填入示例画像</button><button type="button" className="secondaryBtn compact" onClick={clearAll}>清空画像</button></div></div><div className="fieldGrid">{formFields.map(([key,label,kind])=><label key={key} className="fieldItem"><b>{label}</b><small>{fieldHelp[key]}</small>{kind==='input'?<input value={fields[key]} placeholder={fieldExamples[key]} onChange={e=>update(key,e.target.value)} />:<textarea value={fields[key]} placeholder={fieldExamples[key]} onChange={e=>update(key,e.target.value)} />}</label>)}</div><div className="formCard"><label>上传简历 / 经历附件</label><input type="file" accept=".txt,.md,.csv,.json,.pdf,.doc,.docx" onChange={e=>handleFile(e.target.files?.[0])}/><p className="note">{fileNote}</p><label>简历 / 个人经历文本</label><textarea value={fields.resumeText} placeholder={fieldExamples.resumeText} onChange={e=>update('resumeText', e.target.value)} /></div><div className="formCard"><label>目标岗位 JD</label><textarea value={fields.jdText} placeholder={fieldExamples.jdText} onChange={e=>update('jdText', e.target.value)} /><label>本次任务补充问题</label><textarea className="mini" value={fields.userInput} placeholder={fields.userInput ? taskMeta[task].placeholder : fieldExamples.userInput} onChange={e=>update('userInput', e.target.value)} /><button type="button" className="primaryBtn full generateProfile" onClick={generateProfile}>{generated && dirty ? '重新生成职业画像' : '生成职业画像'}</button></div></section>
+    <section id="garden" className="section split"><div><div className="sectionHead"><span className="sectionKicker">Step 02</span><h2>莫奈花园职业地图</h2><p>系统会从扩展岗位库中推荐最匹配的 4 条职业路径。卡片右上角为动态适配度；点击路径卡片后，该岗位会进入后续 AI 工作台上下文。</p></div><div className="selectedPathBanner"><b>当前选中路径</b><strong>{selectedRole ? selectedRole.title : '请先生成职业画像'}</strong><p>{selectedRole ? selectedRole.description : '生成后点击任意花朵卡片，系统会把该岗位写入 JD 匹配、简历优化和面试训练上下文。'}</p></div><div className="gardenGrid">{roleCandidates.length ? roleCandidates.map((r,i)=><button key={r.id} className={`gardenCard flowerCard c${i} ${selectedRole?.id===r.id?'active pulse':''}`} onClick={()=>setSelectedRoleId(r.id)}><span className="petal">{r.score}</span><div><b>{r.title}</b><em>{r.family}</em><p>{r.description}</p></div><small>{r.reason}</small><div className="chips">{r.evidence.slice(0,5).map(e=><i key={e}>{e}</i>)}</div></button>) : <div className="emptyGarden"><b>等待职业花园生成</b><p>完成画像后点击「生成职业画像」。系统会基于岗位库、能力权重和 JD 证据推荐 Top 4 路径。</p><div><span></span><span></span><span></span><span></span></div></div>}</div></div><AbilityRadar scores={displayScores} ready={!!generated}/></section>
+    <section id="workspace" className="section workspace"><div className="sectionHead wide"><span className="sectionKicker">Step 03</span><h2>AI 求职工作台</h2><p>选择不同任务会进入不同 AI 生成链路。职业画像、选中路径、能力雷达、JD 和补充问题会共同决定输出内容。</p></div><div className="taskTabs">{(Object.keys(taskMeta) as Task[]).map(k=><button key={k} className={task===k?'active':''} onClick={()=>setTask(k)}><span>{taskMeta[k].icon}</span>{taskMeta[k].label}</button>)}</div><div className="taskPanel"><div><h3>{taskMeta[task].title}</h3><p>{taskMeta[task].description}</p></div><div className="chips">{taskMeta[task].outputs.map(o=><i key={o}>{o}</i>)}</div></div><div className="contextCard"><b>AI 上下文</b><strong>{selectedRole ? selectedRole.title : '尚未选择职业路径'}</strong><p>{selectedRole ? selectedRole.description : '先生成职业画像并点击一张花朵卡片。'}</p><div className="chips">{selectedRole ? selectedRole.growth.map(g=><i key={g}>{g}</i>) : missingSuggestions.map(g=><i key={g}>待补充：{g}</i>)}</div></div><div className="resultCard"><div className="resultTop"><b>生成结果</b><span className={source==='api'?'source api':source==='fallback'?'source fallback':'source'}>{source==='api'?'模型服务':source==='fallback'?'离线规则引擎':'待生成'}</span></div><button className={`primaryBtn full ${loading?'isLoading':''}`} disabled={loading} onClick={generate}>{loading?'Agent 正在检索与生成…':`生成 ${taskMeta[task].label}`}</button><pre>{result}</pre></div></section>
     <section id="system" className="section systemSection"><div className="sectionHead"><span className="sectionKicker">System</span><h2>系统架构与能力</h2><p>前端负责画像采集、能力评分和岗位排序；服务端负责 Agent 路由、知识检索和模型调用。</p></div><div className="systemGrid compact"><article className="pink"><b>画像层</b><p>结构化采集教育、专业、技能、经历、证据和限制条件。</p></article><article className="teal"><b>推荐层</b><p>岗位库匹配 + 能力权重，生成 Top 4 职业路径。</p></article><article className="lavender"><b>Agent 层</b><p>职业、JD、简历、面试任务分流到不同 Prompt。</p></article><article className="peach"><b>RAG 层</b><p>检索岗位画像、简历规则、面试方法和行业知识。</p></article><article className="ochre"><b>模型层</b><p>Netlify Function 读取密钥并调用 DeepSeek。</p></article><article className="cream"><b>体验层</b><p>先生成画像，再选择路径，最后生成行动建议。</p></article></div></section><footer><span>求职奥德赛 AI · Career Odyssey Agent</span><strong>Amy</strong></footer>
   </main>
 }

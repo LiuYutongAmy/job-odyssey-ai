@@ -424,3 +424,96 @@ footer strong { display: inline-flex; align-items: center; justify-content: cent
   .bubble { font-size: 10.5px; min-height: 40px; padding: 7px 9px; }
   footer { flex-direction: column; gap: 8px; }
 }
+
+/* Final multi-field career release: stable role constellation + readable garden cards */
+.roleCloud { min-height: 520px; }
+.bubble {
+  width: 116px;
+  min-width: 116px;
+  max-width: 116px;
+  height: 78px;
+  min-height: 78px;
+  padding: 10px 12px;
+  border-radius: 48% 52% 45% 55% / 54% 44% 56% 46%;
+  font-size: 13px;
+  letter-spacing: -.01em;
+  transform: none;
+}
+.b0 { left: 7%; top: 9%; background:#ff4d8b; color:#fff; }
+.b1 { left: 33%; top: 8%; background:#e8b94a; }
+.b2 { left: 59%; top: 10%; background:#b8a4ed; }
+.b3 { right: 7%; top: 16%; background:#ffb084; }
+.b4 { left: 14%; top: 31%; background:#a4d4c5; }
+.b5 { left: 42%; top: 29%; background:#fffaf0; }
+.b6 { right: 18%; top: 35%; background:#1a3a3a; color:#fff; }
+.b7 { left: 6%; top: 54%; background:#f5f0e0; }
+.b8 { left: 29%; top: 54%; background:#ff6b5a; color:#fff; }
+.b9 { left: 53%; top: 55%; background:#b8a4ed; }
+.b10 { right: 7%; top: 58%; background:#e8b94a; }
+.b11 { left: 39%; bottom: 9%; background:#ffb084; }
+.bubble:nth-child(3n+1) { border-radius: 51% 49% 46% 54% / 45% 56% 44% 55%; }
+.bubble:nth-child(3n+2) { border-radius: 44% 56% 53% 47% / 54% 43% 57% 46%; }
+.bubble:nth-child(3n) { border-radius: 52% 48% 55% 45% / 48% 52% 42% 58%; }
+
+.gardenCard.flowerCard {
+  border-radius: 28px;
+  min-height: 250px;
+  padding: 24px;
+  overflow: hidden;
+}
+.gardenCard.flowerCard::before {
+  content: "✿";
+  position: absolute;
+  left: 18px;
+  top: 16px;
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: rgba(255,255,255,.28);
+  color: inherit;
+  font-size: 18px;
+  opacity: .9;
+}
+.gardenCard.flowerCard > div:first-of-type { padding-top: 28px; }
+.gardenCard.flowerCard.c1,
+.gardenCard.flowerCard.c2,
+.gardenCard.flowerCard.c3 { border-radius: 28px; }
+.gardenCard .petal {
+  right: 18px;
+  top: 18px;
+  width: 62px;
+  height: 42px;
+  border-radius: 999px;
+  background: rgba(255,255,255,.78);
+  font-size: 18px;
+}
+.gardenCard::after {
+  width: 86px;
+  height: 86px;
+  right: -26px;
+  bottom: -30px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.16);
+}
+.gardenCard b { padding-right: 76px; }
+.qualityActions .secondaryBtn.compact:first-child {
+  background: #ff4d8b;
+  color: #fff;
+  border-color: #ff4d8b;
+  box-shadow: 0 10px 26px rgba(255,77,139,.28);
+}
+.qualityActions .secondaryBtn.compact:first-child:hover { box-shadow: 0 16px 34px rgba(255,77,139,.34); }
+@media (max-width: 980px) {
+  .roleCloud { min-height: 520px; }
+  .bubble { width: 102px; min-width: 102px; max-width: 102px; height: 66px; min-height: 66px; font-size: 11.5px; }
+  .b0 { left: 4%; top: 8%; } .b1 { left: 36%; top: 8%; } .b2 { right: 5%; top: 9%; }
+  .b3 { left: 8%; top: 27%; } .b4 { left: 42%; top: 27%; } .b5 { right: 6%; top: 29%; }
+  .b6 { left: 4%; top: 47%; } .b7 { left: 35%; top: 47%; } .b8 { right: 7%; top: 49%; }
+  .b9 { left: 9%; bottom: 10%; } .b10 { left: 43%; bottom: 9%; } .b11 { right: 8%; bottom: 10%; }
+}
+@media (max-width: 560px) {
+  .roleCloud { min-height: 560px; }
+  .bubble { width: 92px; min-width: 92px; max-width: 92px; height: 58px; min-height: 58px; font-size: 10px; }
+}

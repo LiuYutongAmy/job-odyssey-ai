@@ -1,29 +1,63 @@
-# 求职奥德赛 AI 作品集
+# 求职奥德赛 AI
 
-这是一个面向大学生求职场景的 AI 产品作品集 Demo。产品以“求职是一场奥德赛”为隐喻，把职业定位、简历优化、JD 匹配和面试准备串成一个可演示的求职辅助闭环。
+求职奥德赛 AI 是一个面向大学生与早期职业人群的 AI 求职辅助产品。系统通过画像采集、职业地图、能力雷达、岗位匹配、简历优化与面试训练，把分散的求职准备整合为连续流程。
 
-## 在线演示
+在线版本：
 
-部署后把链接放在这里：
-
-- Vercel 真实 AI 版：`https://job-odyssey-ai.vercel.app`
-- GitHub Pages 静态展示：`https://你的用户名.github.io/job-odyssey-ai/`
-
-## 项目定位
-
-求职奥德赛 AI 是一个“AI 求职探索舱”。用户输入简历经历、目标岗位 JD 和具体问题后，系统输出结构化建议，帮助用户判断岗位匹配度、改写简历表达、准备面试回答。
+```text
+https://job-odyssey-ai.netlify.app
+```
 
 ## 核心功能
 
-- AI 简历优化：根据简历内容和岗位 JD 输出结构化改写建议。
-- JD 匹配分析：提取岗位关键词，判断匹配优势、短板和补强方向。
-- 面试题生成：生成高频问题、回答框架和 STAR 示例。
-- 职业规划展示：把产品、数据、AI、沟通、执行等能力可视化。
-- 双模式运行：未配置 API Key 时显示本地 Demo 结果；配置 API Key 后调用真实 DeepSeek API。
+### 视觉与交互升级
 
-## 技术栈
+- 页面采用奶油色画布、饱和色块、大圆角卡片和花园式职业地图视觉。
+- 增加 subtle noise 纹理层、花朵浮动、点击轻震、加载扫光、雷达呼吸和卡片悬浮反馈。
+- 支持 `prefers-reduced-motion`，用户系统开启减少动态效果时会自动关闭动画。
+- 画像完整度、能力高置信信号、职业地图图例、动态雷达和 Agent 结果联动展示。
 
-React + TypeScript + Vite + CSS + Vercel Serverless Function + DeepSeek API
+
+### 1. 画像采集
+
+采集教育背景、专业方向、求职阶段、目标城市、行业偏好、岗位偏好、项目经历、技能工具、价值观、工作方式偏好、限制条件与目标 JD。系统会把这些信息整合为 Career Profile，作为职业推荐、能力评分和 Agent 生成的输入。
+
+### 2. 莫奈花园职业地图
+
+职业地图不是固定岗位清单。系统会根据输入信息从岗位画像库中动态推荐 Top 4 路径，并以花园式卡片展示岗位名称、适配度、推荐原因、证据关键词和能力缺口。点击任一岗位后，该岗位会进入后续 JD 匹配、简历优化和面试训练上下文。
+
+### 3. 能力雷达图
+
+能力雷达基于八个维度生成：产品定义、用户研究、数据分析、技术理解、AI 应用、项目推进、沟通表达、商业判断。评分依据包括显性技能、项目证据、量化结果、岗位 JD 和目标偏好。
+
+### 4. AI 求职工作台
+
+包含四类任务：职业地图生成、JD 匹配分析、AI 简历优化、面试题生成。每个任务对应不同 Agent 路由、Prompt 模板和输出结构，而不是同一套通用问答。
+
+## 系统架构
+
+```text
+前端交互层
+React + TypeScript + Vite
+  ↓
+画像与评分层
+Career Profile Parser + Role Scoring + Ability Radar
+  ↓
+Agent 路由层
+Career Agent / JD Matching Agent / Resume Rewrite Agent / Interview Coach Agent
+  ↓
+RAG 上下文层
+岗位画像库 + 简历方法论 + 面试训练方法 + 职业准备度知识片段
+  ↓
+模型服务层
+Netlify Function 读取 DEEPSEEK_API_KEY 并调用 DeepSeek Chat API
+```
+
+## RAG 与 Agent 使用位置
+
+- Agent：根据当前任务选择不同处理器。职业地图生成、JD 匹配、简历优化和面试训练分别使用不同 system prompt、输出栏目和约束条件。
+- RAG：后端根据用户画像、简历、JD、目标路径和补充指令检索岗位画像与方法论片段，再把检索结果拼入模型上下文。
+- 结果 grounding：输出会同时参考用户输入、前端动态推荐岗位、能力雷达分数和后端检索上下文。
 
 ## 本地运行
 
@@ -32,31 +66,20 @@ npm install
 npm run dev
 ```
 
-打开：
+## 部署
+
+Netlify 配置：
 
 ```text
-http://localhost:8080
+Build command: npm run build
+Publish directory: dist
+Functions directory: netlify/functions
 ```
 
-## Vercel 真实 AI 部署
-
-1. 将项目上传到 GitHub。
-2. 在 Vercel 中 Import GitHub 仓库。
-3. Framework 选择 Vite。
-4. Build Command 填 `npm run build`。
-5. Output Directory 填 `dist`。
-6. 在 Environment Variables 中新增：
+环境变量：
 
 ```text
 DEEPSEEK_API_KEY=你的 DeepSeek API Key
 ```
 
-7. Redeploy。配置完成后，页面点击“生成 AI 建议”会通过 `/api/ai` 调用 DeepSeek。
-
-## GitHub Pages 静态展示
-
-项目内置 `docs/index.html`，即使不配置 API Key，也可以作为稳定可访问的作品集展示页。静态版会使用本地 Demo 兜底结果。
-
-## 面试讲解口径
-
-本项目的产品逻辑是：先把大学生求职中的信息差抽象成“职业定位—岗位理解—简历优化—面试准备”四个节点，再通过 AI 生成能力把用户输入转化为可执行建议。技术上，前端负责交互与展示，后端函数负责转发模型请求，API Key 仅保存在 Vercel 环境变量中，避免暴露到前端。
+Netlify 会将 `/api/ai` 转发到 `/.netlify/functions/ai`，模型密钥只在服务端函数中读取，前端不会暴露。
